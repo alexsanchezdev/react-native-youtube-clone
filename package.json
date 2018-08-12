@@ -9,7 +9,7 @@
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "REACT_NATIVE_NODE_PATH=src/ react-native-scripts start",
+    "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
@@ -23,6 +23,7 @@
     "prop-types": "^15.6.2",
     "react": "16.3.1",
     "react-native": "~0.55.2",
-    "react-native-vector-icons": "^5.0.0"
+    "react-native-vector-icons": "^5.0.0",
+    "react-navigation": "^2.11.2"
   }
 }

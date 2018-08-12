@@ -1,79 +1,28 @@
 import React from "react";
-import { View, FlatList, SafeAreaView } from "react-native";
+import { createSwitchNavigator } from "react-navigation";
 import { Font, AppLoading } from "expo";
-import FeedVideo from "./src/components/FeedVideo";
+import AppStack from "./src/navigation/AppStack";
 
-const mockData = [
+const AssetsLoader = ({ navigation }) => (
+  <AppLoading
+    startAsync={cacheResourcesAsync}
+    onFinish={() => navigation.navigate("App")}
+    onError={console.warn}
+  />
+);
+
+const cacheResourcesAsync = async () => {
+  await Font.loadAsync({
+    "roboto-regular": require("./src/assets/fonts/Roboto-Regular.ttf")
+  });
+};
+
+export default createSwitchNavigator(
   {
-    id: 1,
-    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
-    duration: "11:42",
-    author: "AuronPlay",
-    views: "2,4M vistas"
+    Loaders: AssetsLoader,
+    App: AppStack
   },
   {
-    id: 2,
-    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
-    duration: "11:42",
-    author: "AuronPlay",
-    views: "2,4M vistas"
-  },
-  {
-    id: 3,
-    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
-    duration: "11:42",
-    author: "AuronPlay",
-    views: "2,4M vistas"
-  },
-  {
-    id: 4,
-    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
-    duration: "11:42",
-    author: "AuronPlay",
-    views: "2,4M vistas"
+    initialRouteName: "Loaders"
   }
-];
-export default class App extends React.Component {
-  state = {
-    isReady: false
-  };
-
-  render() {
-    if (!this.state.isReady) {
-      return (
-        <AppLoading
-          startAsync={this._cacheResourcesAsync}
-          onFinish={() => this.setState({ isReady: true })}
-          onError={console.warn}
-        />
-      );
-    }
-
-    return (
-      <SafeAreaView>
-        <FlatList
-          keyExtractor={item => item.id.toString()}
-          data={mockData}
-          renderItem={({ item }) => (
-            <FeedVideo
-              title={item.title}
-              author={item.author}
-              duration={item.duration}
-              views={item.views}
-            />
-          )}
-          ItemSeparatorComponent={() => (
-            <View style={{ height: 1, backgroundColor: "#ddd" }} />
-          )}
-        />
-      </SafeAreaView>
-    );
-  }
-
-  async _cacheResourcesAsync() {
-    await Font.loadAsync({
-      "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf")
-    });
-    return;
-  }
-}
+);

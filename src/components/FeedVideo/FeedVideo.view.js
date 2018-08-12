@@ -44,13 +44,13 @@ const FeedVideoView = ({
           <Label color={colors.grey} size={13}>
             {author}
           </Label>
-          <Label size={4} style={{ margin: 4 }}>
+          <Label color={colors.grey} size={8} style={styles.bullet}>
             •
           </Label>
           <Label color={colors.grey} size={13}>
             {views}
           </Label>
-          <Label size={4} style={styles.bullet}>
+          <Label color={colors.grey} size={8} style={styles.bullet}>
             •
           </Label>
           <Label color={colors.grey} size={13}>
