@@ -1,7 +1,38 @@
 import React from "react";
-import { View } from "react-native";
+import { View, FlatList, SafeAreaView } from "react-native";
 import { Font, AppLoading } from "expo";
 import FeedVideo from "./src/components/FeedVideo";
+
+const mockData = [
+  {
+    id: 1,
+    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
+    duration: "11:42",
+    author: "AuronPlay",
+    views: "2,4M vistas"
+  },
+  {
+    id: 2,
+    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
+    duration: "11:42",
+    author: "AuronPlay",
+    views: "2,4M vistas"
+  },
+  {
+    id: 3,
+    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
+    duration: "11:42",
+    author: "AuronPlay",
+    views: "2,4M vistas"
+  },
+  {
+    id: 4,
+    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
+    duration: "11:42",
+    author: "AuronPlay",
+    views: "2,4M vistas"
+  }
+];
 export default class App extends React.Component {
   state = {
     isReady: false
@@ -19,13 +50,23 @@ export default class App extends React.Component {
     }
 
     return (
-      <View>
-        <FeedVideo
-          title="PREGUNTAS LAMENTABLES POR LA CALLE"
-          author="AuronPlay"
+      <SafeAreaView>
+        <FlatList
+          keyExtractor={item => item.id.toString()}
+          data={mockData}
+          renderItem={({ item }) => (
+            <FeedVideo
+              title={item.title}
+              author={item.author}
+              duration={item.duration}
+              views={item.views}
+            />
+          )}
+          ItemSeparatorComponent={() => (
+            <View style={{ height: 1, backgroundColor: "#ddd" }} />
+          )}
         />
-        <View style={{ height: 1, backgroundColor: "#ddd" }} />
-      </View>
+      </SafeAreaView>
     );
   }
 
