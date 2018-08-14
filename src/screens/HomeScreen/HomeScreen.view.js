@@ -2,42 +2,11 @@ import React from "react";
 import { SafeAreaView, FlatList, View } from "react-native";
 import FeedVideo from "../../components/FeedVideo";
 
-const mockData = [
-  {
-    id: 1,
-    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
-    duration: "11:42",
-    author: "AuronPlay",
-    views: "2,4M vistas"
-  },
-  {
-    id: 2,
-    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
-    duration: "11:42",
-    author: "AuronPlay",
-    views: "2,4M vistas"
-  },
-  {
-    id: 3,
-    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
-    duration: "11:42",
-    author: "AuronPlay",
-    views: "2,4M vistas"
-  },
-  {
-    id: 4,
-    title: "PREGUNTAS LAMENTABLES POR LA CALLE",
-    duration: "11:42",
-    author: "AuronPlay",
-    views: "2,4M vistas"
-  }
-];
-
-const HomeScreenView = () => (
-  <SafeAreaView>
+const HomeScreenView = ({ data }) => (
+  <SafeAreaView style={{ backgroundColor: "#fff" }}>
     <FlatList
       keyExtractor={item => item.id.toString()}
-      data={mockData}
+      data={data}
       renderItem={({ item }) => (
         <FeedVideo
           title={item.title}

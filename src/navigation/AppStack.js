@@ -107,7 +107,8 @@ export default createBottomTabNavigator(
 
 const styles = StyleSheet.create({
   label: {
-    marginBottom: 8
+    marginBottom: 8,
+    textAlign: "center"
   },
   icon: {
     marginTop: 4

@@ -1,1 +1,1 @@
-export { default } from "./HomeScreen.view";
+export { default } from "./HomeScreen.container";

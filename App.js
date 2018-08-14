@@ -1,7 +1,7 @@
 import React from "react";
 import { createSwitchNavigator } from "react-navigation";
-import { Font, AppLoading } from "expo";
-import AppStack from "./src/navigation/AppStack";
+import { Font, AppLoading, Asset } from "expo";
+import MainStack from "./src/navigation/";
 
 const AssetsLoader = ({ navigation }) => (
   <AppLoading
@@ -20,7 +20,7 @@ const cacheResourcesAsync = async () => {
 export default createSwitchNavigator(
   {
     Loaders: AssetsLoader,
-    App: AppStack
+    App: MainStack
   },
   {
     initialRouteName: "Loaders"
